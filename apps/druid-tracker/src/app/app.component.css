@@ -40,8 +40,7 @@ p {
 
 h1 {
   text-align: center;
-  margin-left: 18px;
-  font-size: 24px;
+  @apply text-lg ml-5 text-red-600;
 }
 
 h2 {
