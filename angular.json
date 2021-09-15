@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "projects": {
+    "druid-tracker": {
+      "projectType": "application",
+      "root": "apps/druid-tracker",
+      "sourceRoot": "apps/druid-tracker/src",
+      "prefix": "ngrx-druids",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/druid-tracker",
+            "index": "apps/druid-tracker/src/index.html",
+            "main": "apps/druid-tracker/src/main.ts",
+            "polyfills": "apps/druid-tracker/src/polyfills.ts",
+            "tsConfig": "apps/druid-tracker/tsconfig.app.json",
+            "assets": [
+              "apps/druid-tracker/src/favicon.ico",
+              "apps/druid-tracker/src/assets"
+            ],
+            "styles": ["apps/druid-tracker/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/druid-tracker/src/environments/environment.ts",
+                  "with": "apps/druid-tracker/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "druid-tracker:build:production"
+            },
+            "development": {
+              "browserTarget": "druid-tracker:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "druid-tracker:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/druid-tracker/src/**/*.ts",
+              "apps/druid-tracker/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/druid-tracker"],
+          "options": {
+            "jestConfig": "apps/druid-tracker/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "druid-tracker-e2e": {
+      "root": "apps/druid-tracker-e2e",
+      "sourceRoot": "apps/druid-tracker-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/druid-tracker-e2e/cypress.json",
+            "devServerTarget": "druid-tracker:serve:development",
+            "tsConfig": "apps/druid-tracker-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "druid-tracker:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/druid-tracker-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "druid-tracker"
+}
