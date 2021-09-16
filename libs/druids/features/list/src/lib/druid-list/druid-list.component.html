@@ -1,0 +1,23 @@
+<ng-container
+  *ngIf="{
+    allDruids: allDruids$ | async,
+    spellEntities: spellEntities$ | async,
+    druidEntities: druidEntities$ | async
+  } as vm"
+>
+  <!-- <pre>{{ vm | json }}</pre> -->
+  <ul>
+    <li *ngFor="let druid of vm.allDruids; trackBy: druidTrackBy">
+      {{ druid.name }}
+      <div>
+        <h2>Spells:</h2>
+        <ul>
+          <li *ngFor="let spellId of druid.spells; trackBy: spellTrackBy">
+            {{ vm.spellEntities?.[spellId]?.name }}
+            (created by: {{ vm.druidEntities?.[$any(vm.spellEntities?.[spellId]?.creatorId)]?.name }})
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</ng-container>

@@ -33,6 +33,18 @@
     "druid-tracker-e2e": {
       "tags": [],
       "implicitDependencies": ["druid-tracker"]
+    },
+    "druids-data-access": {
+      "tags": []
+    },
+    "druids-features-list": {
+      "tags": []
+    },
+    "shared-data-acces": {
+      "tags": []
+    },
+    "spells-data-access": {
+      "tags": []
     }
   }
 }

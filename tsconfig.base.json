@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ngrx-druids/druids/data-access": ["libs/druids/data-access/src/index.ts"],
+      "@ngrx-druids/druids/features/list": ["libs/druids/features/list/src/index.ts"],
+      "@ngrx-druids/shared/data-acces": ["libs/shared/data-acces/src/index.ts"],
+      "@ngrx-druids/spells/data-access": ["libs/spells/data-access/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

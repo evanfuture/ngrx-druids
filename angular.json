@@ -16,10 +16,7 @@
             "main": "apps/druid-tracker/src/main.ts",
             "polyfills": "apps/druid-tracker/src/polyfills.ts",
             "tsConfig": "apps/druid-tracker/tsconfig.app.json",
-            "assets": [
-              "apps/druid-tracker/src/favicon.ico",
-              "apps/druid-tracker/src/assets"
-            ],
+            "assets": ["apps/druid-tracker/src/favicon.ico", "apps/druid-tracker/src/assets"],
             "styles": ["apps/druid-tracker/src/styles.css"],
             "scripts": []
           },
@@ -77,10 +74,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/druid-tracker/src/**/*.ts",
-              "apps/druid-tracker/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/druid-tracker/src/**/*.ts", "apps/druid-tracker/src/**/*.html"]
           }
         },
         "test": {
@@ -119,6 +113,94 @@
           }
         }
       }
+    },
+    "druids-data-access": {
+      "projectType": "library",
+      "root": "libs/druids/data-access",
+      "sourceRoot": "libs/druids/data-access/src",
+      "prefix": "ngrx-druids",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/druids/data-access"],
+          "options": {
+            "jestConfig": "libs/druids/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/druids/data-access/src/**/*.ts", "libs/druids/data-access/src/**/*.html"]
+          }
+        }
+      }
+    },
+    "druids-features-list": {
+      "projectType": "library",
+      "root": "libs/druids/features/list",
+      "sourceRoot": "libs/druids/features/list/src",
+      "prefix": "ngrx-druids",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/druids/features/list"],
+          "options": {
+            "jestConfig": "libs/druids/features/list/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/druids/features/list/src/**/*.ts", "libs/druids/features/list/src/**/*.html"]
+          }
+        }
+      }
+    },
+    "shared-data-acces": {
+      "projectType": "library",
+      "root": "libs/shared/data-acces",
+      "sourceRoot": "libs/shared/data-acces/src",
+      "prefix": "ngrx-druids",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data-acces"],
+          "options": {
+            "jestConfig": "libs/shared/data-acces/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/data-acces/src/**/*.ts", "libs/shared/data-acces/src/**/*.html"]
+          }
+        }
+      }
+    },
+    "spells-data-access": {
+      "projectType": "library",
+      "root": "libs/spells/data-access",
+      "sourceRoot": "libs/spells/data-access/src",
+      "prefix": "ngrx-druids",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/spells/data-access"],
+          "options": {
+            "jestConfig": "libs/spells/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/spells/data-access/src/**/*.ts", "libs/spells/data-access/src/**/*.html"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -146,7 +228,8 @@
     "@nrwl/angular:library": {
       "style": "css",
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": false
     },
     "@nrwl/angular:component": {
       "style": "css"
